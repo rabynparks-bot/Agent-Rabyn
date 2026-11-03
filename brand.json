@@ -1,0 +1,38 @@
+{
+  "account_handle": "@your_handle",
+  "creator_name": "Rabyn",
+  "what_you_teach": "How to create viral AI story videos (drama, relationship, and series content) from idea to posted reel",
+  "offer_name": "AI Story Creator Course",
+  "offer_type": "online course + coaching",
+  "call_to_action": "Comment LEARN and I'll DM you the link, or tap the link in my bio",
+  "link_in_bio": "https://your-link-here.com",
+  "voice": "Confident, warm, a little playful. Short punchy lines. Talks like a friend who already figured it out.",
+  "audience": "Aspiring creators and side-hustlers who want to grow and earn with AI content",
+  "series": [
+    {
+      "name": "Drama AI",
+      "description": "AI-generated drama storylines: betrayal, plot twists, family secrets, multi-part cliffhangers",
+      "highlight_cover_text": "DRAMA"
+    },
+    {
+      "name": "Relationship AI",
+      "description": "AI love stories, couple moments, dating red flags / green flags, relatable relationship scenes",
+      "highlight_cover_text": "LOVE"
+    },
+    {
+      "name": "AI Tutorials",
+      "description": "Behind-the-scenes and how-to posts showing the tools, prompts, and process behind the videos",
+      "highlight_cover_text": "LEARN"
+    },
+    {
+      "name": "Results & Students",
+      "description": "Wins, view counts, student results, testimonials, milestones",
+      "highlight_cover_text": "WINS"
+    },
+    {
+      "name": "Other",
+      "description": "Anything that does not clearly fit the series above",
+      "highlight_cover_text": "MORE"
+    }
+  ]
+}
