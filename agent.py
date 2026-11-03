@@ -2,9 +2,9 @@
 """Instagram organizer agent.
 
 For every post it:
-  1. puts the post in a content series (Drama AI, Relationship AI, ...)
+  1. puts the post in a content pillar (Drama AI, Relationship AI, ...) and spots story series
   2. rewrites the caption to sell, and says you teach how the content is made
-  3. writes a page plan: bio, highlights, pinned posts, series order, posting rhythm
+  3. writes a page plan: bio, highlights, pinned posts, pillar order, posting rhythm
 
 Inputs (pick one):
   --csv FILE        CSV with columns: id,date,permalink,caption
@@ -12,7 +12,7 @@ Inputs (pick one):
   --fetch           read posts live with the Instagram API (needs IG_ACCESS_TOKEN)
 
 Outputs go to ./output/ :
-  captions.csv      old caption, new caption, series, hashtags, per post
+  captions.csv      old caption, new caption, pillar, series, hashtags, per post
   captions.md       the same, easy to read and copy from your phone
   page_plan.md      how to organize the page
 """
@@ -42,8 +42,10 @@ OUT_DIR = Path("output")
 # --------------------------------------------------------------------------- #
 class RewrittenPost(BaseModel):
     id: str
-    series: str = Field(description="Exactly one of the series names from the brand config")
-    episode_label: str = Field(description="e.g. 'Part 2' for a multi-part story, else empty string")
+    pillar: str = Field(description="Exactly one of the content pillar names from the brand config")
+    series_name: str = Field(description="Name of the story series this post belongs to (e.g. 'The Sister Secret'), else empty string")
+    episode_label: str = Field(description="e.g. 'Ep. 2' for a multi-part story, else empty string")
+    series_opportunity: str = Field(description="If a standalone post could start or join a series, say how in one sentence; else empty string")
     hook: str = Field(description="The first line, written to stop the scroll")
     new_caption: str = Field(description="Full ready-to-paste caption, under 2,200 characters, hashtags NOT included")
     hashtags: list[str] = Field(description="3 to 5 targeted hashtags, each starting with #")
@@ -61,11 +63,12 @@ class Highlight(BaseModel):
     what_goes_in_it: str
 
 
-class SeriesPlan(BaseModel):
-    series: str
+class PillarPlan(BaseModel):
+    pillar: str
     post_ids_in_order: list[str]
     recurring_title_format: str = Field(description="e.g. 'Drama AI · Ep. {n}: {title}'")
-    content_ideas: list[str] = Field(description="3 new post ideas for this series")
+    how_it_leads_to_the_vault: str = Field(description="How this pillar moves viewers toward the paid community")
+    content_ideas: list[str] = Field(description="3 new post ideas for this pillar")
 
 
 class PagePlan(BaseModel):
@@ -74,7 +77,7 @@ class PagePlan(BaseModel):
     highlights: list[Highlight]
     pinned_post_ids: list[str] = Field(description="Up to 3 post ids to pin, best first")
     pinned_reasoning: str
-    series: list[SeriesPlan]
+    pillars: list[PillarPlan]
     weekly_posting_rhythm: list[str] = Field(description="e.g. 'Mon - Drama AI episode'")
     grid_tips: list[str]
 
@@ -152,27 +155,41 @@ def fetch_from_api() -> list[dict]:
 # Claude calls
 # --------------------------------------------------------------------------- #
 def system_prompt(brand: dict) -> str:
-    series_lines = "\n".join(f"- {s['name']}: {s['description']}" for s in brand["series"])
+    pillar_lines = "\n".join(
+        f"- {s['name']}: {s['description']}" + (f" | CTA angle: {s['cta_angle']}" if s.get("cta_angle") else "")
+        for s in brand["pillars"]
+    )
+    extra_fields = {
+        "brand_name": "Brand", "positioning": "Positioning", "method": "Signature method",
+        "community": "Community", "community_platform": "Community platform",
+        "visual_identity": "Visual identity (use for cover and highlight ideas)",
+        "main_objective": "Main objective",
+    }
+    extras = "".join(f"- {label}: {brand[k]}\n" for k, label in extra_fields.items() if brand.get(k))
     return f"""You are a senior Instagram growth strategist and direct-response copywriter working for {brand['creator_name']} ({brand['account_handle']}).
 
 ABOUT THE CREATOR
-- Teaches: {brand['what_you_teach']}
+{extras}- Teaches: {brand['what_you_teach']}
 - Offer: {brand['offer_name']} ({brand['offer_type']})
 - Call to action: {brand['call_to_action']}
 - Audience: {brand['audience']}
 - Voice: {brand['voice']}
 
-CONTENT SERIES (assign every post to exactly one, using the exact name):
-{series_lines}
+CONTENT PILLARS (assign every post to exactly one, using the exact name):
+{pillar_lines}
+
+Entertainment pillars (Drama AI, Relationship AI) and education pillars stay distinct, but every
+entertainment caption connects the story to the skill behind it. Drama AI and Relationship AI are never mixed.
+Within a pillar, spot story series: posts that continue the same characters or storyline.
 
 HOW TO WRITE EACH CAPTION
 1. Hook line first. It has to stop the scroll: curiosity, a bold claim, or an open loop. Never start with "In this video".
-2. For story posts (drama or relationship), tease the story without spoiling it, and point to the next or previous part when the post is part of a multi-part story.
-3. Bridge to the teaching: say plainly that {brand['creator_name']} made this with AI and teaches people how to do it. Make it feel like an invitation, not an ad.
+2. For story posts (drama or relationship), tease the story without spoiling it, and point to the next or previous episode when the post is part of a series.
+3. Bridge to the teaching: say plainly that this was made with AI and that {brand['creator_name']} teaches the exact workflow. Use the pillar's CTA angle. Make it feel like an invitation, not an ad.
 4. End with ONE clear call to action, based on: "{brand['call_to_action']}". You can vary the wording; keep the keyword the same.
 5. Short lines with white space. A few emoji at most. Write in the creator's voice.
-6. Keep the post's original meaning. Never invent results, numbers, testimonials, or claims that are not in the original caption.
-7. Hashtags: 3 to 5 targeted ones (niche plus the series), in the hashtags field only, not in the caption.
+6. Keep the post's original meaning. Never invent results, earnings, numbers, testimonials, or achievements that are not in the original caption. No income promises.
+7. Hashtags: 3 to 5 targeted ones (niche plus the pillar), in the hashtags field only, not in the caption.
 """
 
 
@@ -204,7 +221,7 @@ def rewrite_batch(client, brand: dict, batch: list[dict]) -> list[RewrittenPost]
         ensure_ascii=False, indent=2,
     )
     prompt = (
-        "Here are posts from the account, oldest first. For each one, assign its series, "
+        "Here are posts from the account, oldest first. For each one, assign its pillar, "
         "spot multi-part stories, and write the new sales caption. Return one entry per post "
         f"with the same id.\n\n{payload}"
     )
@@ -219,15 +236,16 @@ def rewrite_batch(client, brand: dict, batch: list[dict]) -> list[RewrittenPost]
 def plan_page(client, brand: dict, posts: list[dict], rewritten: list[RewrittenPost]) -> PagePlan:
     summary = json.dumps(
         [
-            {"id": r.id, "date": p["date"], "series": r.series, "episode": r.episode_label, "hook": r.hook}
+            {"id": r.id, "date": p["date"], "pillar": r.pillar, "series": r.series_name,
+             "episode": r.episode_label, "hook": r.hook}
             for p, r in zip(posts, rewritten)
         ],
         ensure_ascii=False, indent=2,
     )
     prompt = (
-        "All posts have been sorted and rewritten. Now design the page so each series is "
-        "clearly separated and visitors are moved toward the offer. Use Story Highlights, "
-        "pinned posts, a recurring title format per series, a bio, and a weekly posting "
+        "All posts have been sorted and rewritten. Now design the page so each pillar is "
+        "clearly separated and visitors are moved toward the Vault. Use Story Highlights, "
+        "pinned posts, a recurring title format per pillar, a bio, and a weekly posting "
         "rhythm. Only use post ids from this list.\n\n" + summary
     )
     return call_structured(client, brand, prompt, PagePlan)
@@ -241,27 +259,30 @@ def write_outputs(brand, posts, rewritten, plan: PagePlan) -> None:
 
     with open(OUT_DIR / "captions.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["id", "date", "permalink", "series", "episode", "old_caption",
-                    "new_caption", "hashtags", "on_screen_text", "why"])
+        w.writerow(["id", "date", "permalink", "pillar", "series", "episode", "series_opportunity",
+                    "old_caption", "new_caption", "hashtags", "on_screen_text", "why"])
         for p, r in zip(posts, rewritten):
-            w.writerow([p["id"], p["date"], p["permalink"], r.series, r.episode_label,
-                        p["caption"], r.new_caption, " ".join(r.hashtags), r.on_screen_text, r.why])
+            w.writerow([p["id"], p["date"], p["permalink"], r.pillar, r.series_name, r.episode_label,
+                        r.series_opportunity, p["caption"], r.new_caption, " ".join(r.hashtags),
+                        r.on_screen_text, r.why])
 
     lines = [f"# New captions for {brand['account_handle']}\n"]
-    for s in brand["series"]:
-        group = [(p, r) for p, r in zip(posts, rewritten) if r.series == s["name"]]
+    for s in brand["pillars"]:
+        group = [(p, r) for p, r in zip(posts, rewritten) if r.pillar == s["name"]]
         if not group:
             continue
         lines.append(f"\n## {s['name']} ({len(group)} posts)\n")
         for p, r in group:
-            title = f"{r.episode_label} · " if r.episode_label else ""
+            title = " · ".join(x for x in (r.series_name, r.episode_label) if x)
+            title = f"{title} · " if title else ""
             lines += [
                 f"\n### {title}{p['date']} · `{p['id']}`",
                 f"{p['permalink']}\n" if p["permalink"] else "",
                 "**Old:**", f"> {p['caption'] or '(no caption)'}\n",
                 "**New, ready to paste:**", "```", r.new_caption, "", " ".join(r.hashtags), "```",
                 f"*Cover text:* {r.on_screen_text}  ",
-                f"*Why:* {r.why}\n",
+                f"*Why:* {r.why}  ",
+                f"*Series idea:* {r.series_opportunity}\n" if r.series_opportunity else "",
             ]
     (OUT_DIR / "captions.md").write_text("\n".join(lines), encoding="utf-8")
 
@@ -272,9 +293,10 @@ def write_outputs(brand, posts, rewritten, plan: PagePlan) -> None:
     pl += [f"{i}. **{h.name}** · cover text: `{h.cover_text}` · {h.what_goes_in_it}"
            for i, h in enumerate(plan.highlights, 1)]
     pl += ["\n## Pinned posts", *[f"- `{pid}`" for pid in plan.pinned_post_ids], plan.pinned_reasoning]
-    pl.append("\n## Series")
-    for s in plan.series:
-        pl += [f"\n### {s.series}", f"Title format: `{s.recurring_title_format}`  ",
+    pl.append("\n## Content pillars")
+    for s in plan.pillars:
+        pl += [f"\n### {s.pillar}", f"Title format: `{s.recurring_title_format}`  ",
+               f"Path to the Vault: {s.how_it_leads_to_the_vault}  ",
                "Posts in order: " + ", ".join(f"`{x}`" for x in s.post_ids_in_order),
                "\nNew ideas:", *[f"- {idea}" for idea in s.content_ideas]]
     pl += ["\n## Weekly posting rhythm", *[f"- {d}" for d in plan.weekly_posting_rhythm]]

@@ -1,0 +1,386 @@
+{
+  "community": "DGL BY RJ Vault",
+  "tagline": "Skills For CEOs Who Prompt To Profit",
+  "learning_paths": {
+    "Beginner (New CEO)": ["01", "02", "05", "03", "04"],
+    "Creator (Storyteller)": ["06", "07", "08", "09"],
+    "Business (CEO)": ["10", "11", "12"],
+    "Always open": ["13", "14"]
+  },
+  "classrooms": [
+    {
+      "id": "01",
+      "name": "START HERE: CEO ORIENTATION",
+      "cover_text": "START HERE",
+      "level": "Everyone",
+      "description": "Welcome to the DGL BY RJ Vault. Start here to learn how the community works, set up your profile, pick your learning path, and finish your first win in your first 7 days.",
+      "learning_outcome": "Members know the rules, how to find everything, which path to follow, and they have posted their first introduction and first AI creation.",
+      "modules": [
+        {
+          "name": "Welcome to the Vault",
+          "lessons": ["A welcome from RJ: what DGL x P2P means", "How the Vault is organized", "Community rules and standards", "How to ask for help so you get answers fast"],
+          "assignment": "Post your introduction in the community: your name, what you create now, and the one skill you came here to master."
+        },
+        {
+          "name": "Set Up Your CEO Toolkit",
+          "lessons": ["The affordable AI app stack (what you need and what you don't)", "Setting up your accounts and folders", "How to save and organize your prompts"],
+          "assignment": "Set up your prompt folder and screenshot your toolkit checklist."
+        },
+        {
+          "name": "Choose Your Path",
+          "lessons": ["The 3 learning paths: Beginner, Creator, Business", "Your first 7 days, step by step", "How levels, points and unlocks work in the Vault"],
+          "assignment": "Comment which path you chose and finish the Day 1 task."
+        }
+      ],
+      "resources": ["Vault navigation map (PDF)", "AI app starter checklist", "7-day onboarding checklist"]
+    },
+    {
+      "id": "02",
+      "name": "THE PROMPTING LAB",
+      "cover_text": "PROMPTING LAB",
+      "level": "Beginner to Advanced",
+      "description": "The core of DGL x P2P. Learn RJ's prompting method and tested prompt structures, and the workflows that get premium results from affordable AI apps.",
+      "learning_outcome": "Members can write structured prompts that give consistent, realistic, controllable results in any image or video app, and can debug a prompt that isn't working.",
+      "modules": [
+        {
+          "name": "Prompting Foundations",
+          "lessons": ["Why the prompt matters more than the app", "The anatomy of a strong prompt: subject, scene, style, camera, light", "Writing prompts in plain language vs structured formats", "Negative prompts and what to leave out"],
+          "assignment": "Rewrite one weak prompt three times using the anatomy framework and post all three results."
+        },
+        {
+          "name": "The DGL x P2P Method",
+          "lessons": ["The DGL x P2P framework explained", "Building reusable prompt templates", "Prompt stacking and iteration loops", "Debugging: why a prompt fails and how to fix it"],
+          "assignment": "Build your first reusable template and test it on three different subjects."
+        },
+        {
+          "name": "Advanced Prompt Engineering",
+          "lessons": ["Structured and code-style prompts (JSON and parameter formats)", "Camera and lens language for realism", "Lighting language for realism", "Using AI chat assistants to write and refine prompts"],
+          "assignment": "Create one structured (code-style) prompt and compare it side by side with a plain-language version."
+        }
+      ],
+      "resources": ["Prompt anatomy cheat sheet", "Camera and lens vocabulary list", "Lighting vocabulary list", "RJ's tested prompt templates [RJ TO ADD]"]
+    },
+    {
+      "id": "03",
+      "name": "AI PHOTO STUDIO",
+      "cover_text": "PHOTO STUDIO",
+      "level": "Beginner to Intermediate",
+      "description": "Create realistic AI images: portraits, fashion, lifestyle and product photography, with the same character in every shot.",
+      "learning_outcome": "Members can produce realistic, brand-ready photos and keep a person or product looking the same across a full photo set.",
+      "modules": [
+        {
+          "name": "Realistic Portraits",
+          "lessons": ["What makes an AI image look real vs fake", "Skin, hands, eyes: fixing the common giveaways", "Portrait lighting setups in prompt form"],
+          "assignment": "Create a 3-image portrait set of one person in three different lighting setups."
+        },
+        {
+          "name": "Fashion and Lifestyle",
+          "lessons": ["Fashion editorial prompts", "Lifestyle and 'day in the life' scenes", "Luxury aesthetic: building the black, white and chrome look"],
+          "assignment": "Create a 4-image fashion carousel with one consistent model."
+        },
+        {
+          "name": "Product Photography",
+          "lessons": ["Product shots for brands and clients", "Placing real products into AI scenes", "Building a product photo set for an online store"],
+          "assignment": "Create a 3-image product set for a real or sample product."
+        },
+        {
+          "name": "Editing and Upscaling",
+          "lessons": ["Inpainting and fixing details", "Upscaling for print and social", "Final polish workflow"],
+          "assignment": "Post a before-and-after of an image you fixed."
+        }
+      ],
+      "resources": ["Portrait prompt pack [RJ TO ADD]", "Product photo prompt pack [RJ TO ADD]", "Realism checklist"]
+    },
+    {
+      "id": "04",
+      "name": "AI VIDEO PRODUCTION",
+      "cover_text": "VIDEO",
+      "level": "Intermediate",
+      "description": "Turn images and ideas into cinematic AI video. Covers Seedance workflows, multi-scene stories, motion prompting and editing a finished reel.",
+      "learning_outcome": "Members can plan, generate and edit a multi-scene AI video with consistent characters, ready to post.",
+      "modules": [
+        {
+          "name": "AI Video Foundations",
+          "lessons": ["Text-to-video vs image-to-video", "Motion prompting: describing movement and camera moves", "Choosing the right video app for the job"],
+          "assignment": "Generate one 5-second clip from text and one from an image, using the same subject."
+        },
+        {
+          "name": "Seedance Workflows",
+          "lessons": ["Getting started with Seedance", "Seedance prompt structure for realistic motion", "Multi-shot and scene control in Seedance", "Seedance troubleshooting"],
+          "assignment": "Create a 3-shot Seedance sequence with one character."
+        },
+        {
+          "name": "Multi-Scene Storytelling",
+          "lessons": ["Shot lists and storyboards with AI", "Keeping characters consistent across scenes", "Voice, lip-sync and sound"],
+          "assignment": "Storyboard and produce a 15–30 second multi-scene story."
+        },
+        {
+          "name": "Editing and Delivery",
+          "lessons": ["Editing workflow: assemble, pace, caption", "Export settings for Reels", "Cover frames and hooks in the first 2 seconds"],
+          "assignment": "Post your finished reel in the Showcase with your shot list."
+        }
+      ],
+      "resources": ["Shot list template", "Motion vocabulary list", "Seedance prompt templates [RJ TO ADD]", "Reel export settings sheet"]
+    },
+    {
+      "id": "05",
+      "name": "AI APP VAULT",
+      "cover_text": "APP VAULT",
+      "level": "Everyone",
+      "description": "Walkthroughs of the AI apps worth using, affordable alternatives to expensive tools, side-by-side model comparisons, and updates as the apps change.",
+      "learning_outcome": "Members can pick the right affordable app for any task and keep up when apps and models change.",
+      "modules": [
+        {
+          "name": "Image Apps",
+          "lessons": ["Image app walkthroughs [RJ TO ADD: current apps]", "Free and low-cost alternatives", "Side-by-side: same prompt, different apps"],
+          "assignment": "Run one prompt in two apps and post the comparison."
+        },
+        {
+          "name": "Video Apps",
+          "lessons": ["Video app walkthroughs [RJ TO ADD: current apps]", "Credits, pricing and getting the most per dollar", "Side-by-side video comparisons"],
+          "assignment": "Share which video app fits your budget and why."
+        },
+        {
+          "name": "Assistant, Voice and Editing Apps",
+          "lessons": ["AI chat assistants for prompts, scripts and captions", "Voice and audio apps", "Editing apps for finishing"],
+          "assignment": "Build your personal stack list: one app per job."
+        },
+        {
+          "name": "Monthly App Updates",
+          "lessons": ["How to evaluate a new app in 15 minutes", "Update log [updated monthly]"],
+          "assignment": "Review one new app with the 15-minute method."
+        }
+      ],
+      "resources": ["App comparison sheet (kept current)", "Budget stack guide", "15-minute app review template"]
+    },
+    {
+      "id": "06",
+      "name": "AI CHARACTER UNIVERSITY",
+      "cover_text": "CHARACTERS",
+      "level": "Intermediate to Advanced",
+      "description": "Create AI characters who look the same in every image and video. Covers reference sheets, identity locks, wardrobe and personality, and characters that can carry a series.",
+      "learning_outcome": "Members can design an original character and keep it recognizable across photos, videos and episodes.",
+      "modules": [
+        {
+          "name": "Character Design",
+          "lessons": ["Designing an original character from scratch", "Writing the character bible: look, personality, backstory", "Avoiding look-alikes of real people"],
+          "assignment": "Write a one-page character bible for your first character."
+        },
+        {
+          "name": "Reference Sheets and Identity Locks",
+          "lessons": ["Building a character reference sheet", "Identity locks: the details that keep a face consistent", "Using reference images across apps"],
+          "assignment": "Create a reference sheet with front, side, and 3/4 views."
+        },
+        {
+          "name": "Characters in Motion",
+          "lessons": ["Keeping characters consistent in video", "Wardrobe and scene changes without losing identity", "Building a cast that works together"],
+          "assignment": "Put your character in 3 different scenes and 1 video clip."
+        }
+      ],
+      "resources": ["Character bible template", "Reference sheet template", "Identity lock checklist"]
+    },
+    {
+      "id": "07",
+      "name": "DRAMA AI STUDIOS",
+      "cover_text": "DRAMA AI",
+      "level": "Creator",
+      "description": "Produce AI drama and reality shows: concepts, casting, scripts, episodes and cliffhangers that keep viewers coming back for the next part.",
+      "learning_outcome": "Members can plan and produce an original multi-episode AI drama series with a repeatable production workflow.",
+      "modules": [
+        {
+          "name": "Show Development",
+          "lessons": ["Finding a drama concept that hooks", "Formats: reality show, soap, confessional, mystery", "Show bible: premise, cast, conflict, season arc"],
+          "assignment": "Write the show bible for your drama series."
+        },
+        {
+          "name": "Casting and Scripts",
+          "lessons": ["Casting your AI characters", "Writing short-form drama scripts", "Dialogue, tension and the cliffhanger ending"],
+          "assignment": "Cast your show and write the Episode 1 script."
+        },
+        {
+          "name": "Episode Production",
+          "lessons": ["From script to shot list", "Producing an episode end to end", "Series packaging: titles, covers, part numbers"],
+          "assignment": "Produce and post Episode 1 in the Showcase."
+        }
+      ],
+      "resources": ["Drama show bible template", "Episode script template", "Cliffhanger formula sheet"]
+    },
+    {
+      "id": "08",
+      "name": "RELATIONSHIP AI STUDIOS",
+      "cover_text": "RELATIONSHIP AI",
+      "level": "Creator",
+      "description": "Create AI couples and relationship stories: characters, chemistry, relatable moments and ongoing love-story series that audiences connect with.",
+      "learning_outcome": "Members can build an AI couple with real chemistry and produce a relatable, ongoing relationship series.",
+      "modules": [
+        {
+          "name": "Building the Couple",
+          "lessons": ["Designing a couple viewers root for", "Chemistry on camera: poses, expressions, closeness", "Keeping both characters consistent together"],
+          "assignment": "Create your couple's reference sheet and 3 photos together."
+        },
+        {
+          "name": "Relationship Storytelling",
+          "lessons": ["Relatable formats: red flags and green flags, POV, 'when he/she…'", "Writing a love-story arc", "Making viewers care and comment"],
+          "assignment": "Write 5 relatable post concepts for your couple."
+        },
+        {
+          "name": "Series Production",
+          "lessons": ["Planning a relationship series by season", "Producing episodes efficiently", "Packaging and posting the series"],
+          "assignment": "Produce and post the first episode of your couple series."
+        }
+      ],
+      "resources": ["Couple reference sheet template", "Relationship story arc template", "Relatable hooks list"]
+    },
+    {
+      "id": "09",
+      "name": "FACELESS CONTENT SYSTEMS",
+      "cover_text": "FACELESS",
+      "level": "Creator to Business",
+      "description": "Build and grow a faceless page powered by AI: choose a niche, brand the page, batch content, and build systems that keep it running without you on camera.",
+      "learning_outcome": "Members can launch a branded faceless page with a content system that holds up for 30 days of posting.",
+      "modules": [
+        {
+          "name": "Faceless Page Strategy",
+          "lessons": ["Choosing a faceless niche", "Faceless branding: name, look, voice", "Page setup and bio"],
+          "assignment": "Submit your faceless page concept: niche, name, 3 sample posts."
+        },
+        {
+          "name": "Content Systems",
+          "lessons": ["Content pillars for faceless pages", "Batch-creating a week of content in one session", "Templates and repeatable formats"],
+          "assignment": "Batch-create 7 posts and share your process."
+        },
+        {
+          "name": "Growth and Consistency",
+          "lessons": ["Posting schedules that hold up", "Reading your page analytics", "When to change course vs stay consistent"],
+          "assignment": "Post for 14 days and share your analytics review."
+        }
+      ],
+      "resources": ["Faceless niche worksheet", "Weekly batch template", "30-day posting tracker"]
+    },
+    {
+      "id": "10",
+      "name": "SOCIAL MEDIA CEO SCHOOL",
+      "cover_text": "SOCIAL CEO",
+      "level": "Business",
+      "description": "Instagram growth for CEOs: how the algorithm works, hooks, engagement, captions that sell, Stories and DMs, so content brings in followers and customers.",
+      "learning_outcome": "Members can run a content strategy that grows reach and turns viewers into leads and customers.",
+      "modules": [
+        {
+          "name": "How the Algorithm Works",
+          "lessons": ["How Instagram ranks Reels, posts and Stories", "Shares, saves and watch time: what to optimize", "Profile setup that converts visitors"],
+          "assignment": "Audit your profile with the conversion checklist."
+        },
+        {
+          "name": "Content That Grows",
+          "lessons": ["Hooks: the first 2 seconds and the first line", "Content pillars and series", "Captions that sell without sounding salesy"],
+          "assignment": "Write 10 hooks and 3 sales captions for your pillars."
+        },
+        {
+          "name": "Engagement and Conversion",
+          "lessons": ["Comment-keyword CTAs and DM flows", "Story sequences that sell", "Weekly content calendar"],
+          "assignment": "Run one comment-keyword campaign and report what you learned."
+        }
+      ],
+      "resources": ["Profile conversion checklist", "Hook bank", "Caption formula sheet", "Weekly calendar template"]
+    },
+    {
+      "id": "11",
+      "name": "DIGITAL PRODUCT EMPIRE",
+      "cover_text": "PRODUCTS",
+      "level": "Business",
+      "description": "Turn your AI skills into digital products: prompt packs, templates, guides and mini-courses, with the offers, funnels and systems to sell them.",
+      "learning_outcome": "Members can create, price, package and launch their first digital product with a simple sales funnel.",
+      "modules": [
+        {
+          "name": "Product Creation",
+          "lessons": ["Finding a product people will pay for", "Types of AI digital products", "Building your first product"],
+          "assignment": "Outline your first product and its target buyer."
+        },
+        {
+          "name": "Offers and Pricing",
+          "lessons": ["Writing an offer that sells", "Pricing your product", "Bonuses, bundles and upsells"],
+          "assignment": "Write your offer and price it."
+        },
+        {
+          "name": "Funnels and Launch",
+          "lessons": ["A simple funnel: content to DM to checkout", "Sales page essentials", "Launching to your audience"],
+          "assignment": "Launch your product and share your launch plan."
+        }
+      ],
+      "resources": ["Product idea worksheet", "Offer template", "Sales page template", "Launch checklist"]
+    },
+    {
+      "id": "12",
+      "name": "CLIENT SERVICES & DFY",
+      "cover_text": "CLIENTS",
+      "level": "Business",
+      "description": "Sell your AI content skills as a service: done-for-you content, client acquisition, pricing, contracts, delivery and keeping clients coming back.",
+      "learning_outcome": "Members can package a done-for-you AI content service, find clients, price it, and deliver professionally.",
+      "modules": [
+        {
+          "name": "Packaging Your Service",
+          "lessons": ["Services you can offer with AI skills", "Building your portfolio", "Packages and pricing"],
+          "assignment": "Create your service menu with 3 packages."
+        },
+        {
+          "name": "Getting Clients",
+          "lessons": ["Where clients are and how to reach them", "Outreach and DM scripts", "Discovery calls that close"],
+          "assignment": "Send 10 outreach messages and share your results honestly."
+        },
+        {
+          "name": "Delivery and Retention",
+          "lessons": ["Onboarding a client", "Delivery workflows and revisions", "Retainers and referrals"],
+          "assignment": "Write your client onboarding checklist."
+        }
+      ],
+      "resources": ["Service menu template", "Outreach script bank", "Client onboarding checklist", "Simple service agreement outline (have it reviewed locally)"]
+    },
+    {
+      "id": "13",
+      "name": "CEO RESULTS & STUDENT SHOWCASE",
+      "cover_text": "SHOWCASE",
+      "level": "Everyone",
+      "description": "Post your assignments, get feedback, and celebrate real wins. This is where Vault members show their work and level up together.",
+      "learning_outcome": "Members get regular feedback and build a portfolio of finished work.",
+      "modules": [
+        {
+          "name": "How to Submit Work",
+          "lessons": ["How to post an assignment for feedback", "How to give useful feedback", "Showcase standards"],
+          "assignment": "Submit your first assignment for feedback."
+        },
+        {
+          "name": "Wins Wall",
+          "lessons": ["How to share a win", "Featured student work [updated monthly]"],
+          "assignment": "Share one win, big or small."
+        }
+      ],
+      "resources": ["Feedback request template", "Win post template"]
+    },
+    {
+      "id": "14",
+      "name": "RJ'S RESOURCE VAULT",
+      "cover_text": "RESOURCES",
+      "level": "Everyone",
+      "description": "Every prompt library, template, download, code and reference from the Vault, organized in one place.",
+      "learning_outcome": "Members can find any resource in under a minute.",
+      "modules": [
+        {
+          "name": "Prompt Libraries",
+          "lessons": ["Image prompt library [RJ TO ADD]", "Video prompt library [RJ TO ADD]", "Character prompt library [RJ TO ADD]", "Caption and script prompt library"],
+          "assignment": ""
+        },
+        {
+          "name": "Templates and Downloads",
+          "lessons": ["Storytelling templates", "Business and marketing templates", "Checklists"],
+          "assignment": ""
+        },
+        {
+          "name": "Codes and References",
+          "lessons": ["Structured prompt codes [RJ TO ADD]", "Vocabulary references: camera, light, motion, style"],
+          "assignment": ""
+        }
+      ],
+      "resources": ["Master resource index"]
+    }
+  ]
+}

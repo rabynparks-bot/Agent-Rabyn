@@ -1,14 +1,24 @@
-# Agent Rabyn: Instagram organizer and caption rewriter
+# DGL BY RJ: Rebrand & Business Operations Agent
 
-An AI agent built on Claude that goes through your Instagram posts and:
+*Skills For CEOs Who Prompt To Profit.*
 
-1. **Sorts every post into a series**: Drama AI, Relationship AI, AI Tutorials, Results & Students, or Other.
-2. **Rewrites every caption to sell.** Each one gets a scroll-stopping hook, a line saying you made it with AI and **teach people how**, and one clear call to action (for example "Comment LEARN").
-3. **Plans the whole page**: bio, name field, Story Highlights for each series, which posts to pin, a title format for each series, new post ideas, and a weekly posting schedule.
+This repo is RJ's AI agent for rebranding and running DGL BY RJ. It covers four areas:
 
-## What it can and can't do
+1. **Brand rebrand:** DGL BY RJ, DGL x P2P, messaging, identity, offers → `rebrand/02_brand_blueprint.md`
+2. **Instagram organization:** six content pillars, series, caption rewrites → `agent.py` + `rebrand/03_instagram_organization.md`
+3. **Skool community rebuild:** 14 classrooms, full lessons → `rebrand/skool/`
+4. **Content and sales:** campaigns, DM scripts, calendar, onboarding → `rebrand/04_…`, `05_…`, `06_…`
 
-Instagram doesn't let any outside app **edit captions on existing posts** or **create Highlights**. The agent writes everything for you, and you paste it in. Posts are grouped by series in `output/captions.md`, so you can work through one series at a time from your phone: open the post, tap ⋯, then Edit, and paste.
+**Start with `rebrand/00_STATUS.md`** to see what's done, what's waiting, and what needs your approval.
+
+The agent's standing instructions are in `CLAUDE.md`. Any Claude Code session opened on this repo follows them automatically.
+
+## What it can and can't do on the platforms
+
+| | Build | Analyze | Execute directly |
+|---|---|---|---|
+| **Instagram** | ✅ captions, plans, campaigns | ✅ reads your posts (export or API) | ❌ Instagram doesn't let outside apps edit captions or Highlights, so you paste them in |
+| **Skool** | ✅ classrooms, lessons, descriptions | ✅ from screenshots or copy-paste | ⚠️ no public API; only through a browser session you authorize and watch |
 
 ## Setup (one time)
 
@@ -17,39 +27,36 @@ pip install -r requirements.txt
 export ANTHROPIC_API_KEY=sk-ant-...     # from console.anthropic.com
 ```
 
-Then open **`brand.json`** and fill in your handle, what you teach, your offer, your link, and your call to action. You can also rename, add, or remove series there.
+Your brand settings are already in `brand.json`. Add your Instagram handle in `account_handle`.
 
-## Get your posts in (pick one)
+## 1. Instagram: rewrite every caption
 
-**Option A: Instagram data download (easiest, no developer account)**
-Instagram app: Settings → Accounts Center → Your information and permissions → Download your information. Choose **JSON** format and include **Content**. Unzip the file and find `posts_1.json` (under `your_instagram_activity/content/`).
+Download your posts: Instagram → Settings → Accounts Center → Your information and permissions → Download your information → **JSON**, including **Content**. Then find `posts_1.json`.
+
 ```bash
-python agent.py --export path/to/posts_1.json
+python agent.py --export path/to/posts_1.json --limit 10   # test on 10 posts first
+python agent.py --export path/to/posts_1.json              # all posts
 ```
 
-**Option B: a spreadsheet.** Make a CSV with the columns `id,date,permalink,caption` (see `sample/posts.csv`).
+Other ways in: `--csv file.csv` (columns `id,date,permalink,caption`) or `--fetch` with `IG_ACCESS_TOKEN` (Professional account plus a Meta developer app).
+
+**You get, in `output/`:**
+- `captions.md`: posts grouped by pillar, each with the old caption, the new caption ready to paste, hashtags, cover text, and series ideas
+- `captions.csv`: the same content as a spreadsheet
+- `page_plan.md`: bio, Highlights, pinned posts, order for each pillar, and a weekly schedule
+
+## 2. Skool: build the classrooms and lessons
+
 ```bash
-python agent.py --csv sample/posts.csv
+python rebrand/skool/build_skool.py render                    # classroom master list (no API key needed)
+python rebrand/skool/build_skool.py lessons --classroom 01    # writes full lessons for classroom 01
+python rebrand/skool/build_skool.py lessons --classroom 02 --module 1 --limit 2
 ```
 
-**Option C: live from Instagram (read-only).** This needs a Professional (Creator or Business) account and an access token from a Meta developer app that uses the Instagram API with Instagram Login.
-```bash
-export IG_ACCESS_TOKEN=...
-python agent.py --fetch
-```
+- The classroom structure lives in `rebrand/skool/curriculum.json`. Edit it there, then run `render` again.
+- Lessons are saved in `rebrand/skool/lessons/`. Existing lessons are never overwritten.
+- Each lesson ends with an **"RJ to add before publishing"** checklist: your tested prompts, screen recordings, current app names. The agent never makes those up.
 
-Tip: do a test run on 10 posts first with `--limit 10`.
+## Models
 
-## What you get (in `output/`)
-
-| File | What's in it |
-|---|---|
-| `captions.md` | Posts grouped by series, with the old caption, the new caption ready to paste, hashtags, cover text, and why the new version works |
-| `captions.csv` | The same content as a spreadsheet |
-| `page_plan.md` | Bio, Highlights (with cover text), pinned posts, the order of posts in each series, new ideas, and a weekly schedule |
-
-## How it works
-
-- Model: Claude Opus 5.5 (`claude-opus-5-5`), with structured outputs so every result has the same fields. Server-side fallback is turned on, so if a request is declined it reruns on a fallback model automatically.
-- It handles posts in batches of 10 (`BATCH_SIZE` in `agent.py`), then makes one more call to plan the page.
-- Its rules: keep the original meaning of each post, never make up results or testimonials, use 3 to 5 hashtags, and stay under Instagram's 2,200-character limit.
+Both tools use Claude Opus 5.5 (`claude-opus-5-5`) with structured outputs, so every result has the same fields. Server-side fallback is on, so a declined request reruns on a fallback model automatically.

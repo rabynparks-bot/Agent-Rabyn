@@ -1,38 +1,62 @@
 {
   "account_handle": "@your_handle",
-  "creator_name": "Rabyn",
-  "what_you_teach": "How to create viral AI story videos (drama, relationship, and series content) from idea to posted reel",
-  "offer_name": "AI Story Creator Course",
-  "offer_type": "online course + coaching",
-  "call_to_action": "Comment LEARN and I'll DM you the link, or tap the link in my bio",
-  "link_in_bio": "https://your-link-here.com",
-  "voice": "Confident, warm, a little playful. Short punchy lines. Talks like a friend who already figured it out.",
-  "audience": "Aspiring creators and side-hustlers who want to grow and earn with AI content",
-  "series": [
+  "creator_name": "Rabyn Parks (RJ)",
+  "brand_name": "DGL BY RJ",
+  "positioning": "Skills For CEOs Who Prompt To Profit",
+  "method": "DGL x P2P (Prompt to Profit)",
+  "community": "DGL BY RJ Vault",
+  "community_platform": "Skool",
+  "visual_identity": "Black, white and chrome silver. Luxury technology, clean, premium, modern CEO. Never purple or hot pink.",
+  "main_objective": "Education, community growth and monetization",
+  "what_you_teach": "Tested prompting techniques and workflows that get better results from affordable AI apps: realistic AI photos, AI video (including Seedance), consistent AI characters, AI storytelling and reality shows, faceless content, social media growth, digital products, client services and AI business systems",
+  "offer_name": "DGL BY RJ Vault",
+  "offer_type": "Skool community with classrooms, prompt libraries and coaching",
+  "call_to_action": "Comment VAULT and I'll DM you the link to the DGL BY RJ Vault, or tap the link in my bio",
+  "link_in_bio": "https://dglbyrj.com",
+  "voice": "Confident CEO energy: sharp, direct, premium, generous with real knowledge. Short punchy lines. A mentor who has tested it and is bringing you in. No hype, no income promises.",
+  "audience": "Men and women (creators, entrepreneurs, business owners and beginners) who want to master AI apps and turn the skill into a brand and a business",
+  "pillars": [
     {
       "name": "Drama AI",
-      "description": "AI-generated drama storylines: betrayal, plot twists, family secrets, multi-part cliffhangers",
-      "highlight_cover_text": "DRAMA"
+      "description": "Entertainment. AI drama and reality-show storylines: betrayal, plot twists, family secrets, multi-part cliffhangers",
+      "highlight_cover_text": "DRAMA",
+      "cta_angle": "Want to produce your own AI reality show? I teach it inside Drama AI Studios in the Vault."
     },
     {
       "name": "Relationship AI",
-      "description": "AI love stories, couple moments, dating red flags / green flags, relatable relationship scenes",
-      "highlight_cover_text": "LOVE"
+      "description": "Entertainment. AI couples, love stories, dating red flags and green flags, relationship series",
+      "highlight_cover_text": "LOVE",
+      "cta_angle": "Want to build your own AI couple series? I teach it inside Relationship AI Studios in the Vault."
     },
     {
       "name": "AI Tutorials",
-      "description": "Behind-the-scenes and how-to posts showing the tools, prompts, and process behind the videos",
-      "highlight_cover_text": "LEARN"
+      "description": "Education. How-to posts: prompts, app walkthroughs, behind-the-scenes of how the videos and images are made",
+      "highlight_cover_text": "HOW TO",
+      "cta_angle": "The full workflow and my tested prompts are in the Prompting Lab inside the Vault."
     },
     {
-      "name": "Results & Students",
-      "description": "Wins, view counts, student results, testimonials, milestones",
-      "highlight_cover_text": "WINS"
+      "name": "AI Results & Student Success",
+      "description": "Proof. Real student work, Vault wins, before-and-after prompting results. Only real, verifiable results",
+      "highlight_cover_text": "WINS",
+      "cta_angle": "This is what happens when you learn the method. Join the Vault."
+    },
+    {
+      "name": "DGL Education",
+      "description": "Authority. The DGL x P2P method, prompting principles, mindset, why tested prompts beat expensive apps",
+      "highlight_cover_text": "P2P",
+      "cta_angle": "This is the DGL x P2P method. The full system is inside the Vault."
+    },
+    {
+      "name": "Business, Branding & Monetization",
+      "description": "Business. Turning AI skills into income: digital products, client services, faceless pages, branding, offers",
+      "highlight_cover_text": "CEO",
+      "cta_angle": "Skills for CEOs who prompt to profit. The business classrooms are inside the Vault."
     },
     {
       "name": "Other",
-      "description": "Anything that does not clearly fit the series above",
-      "highlight_cover_text": "MORE"
+      "description": "Anything that does not clearly fit the pillars above",
+      "highlight_cover_text": "MORE",
+      "cta_angle": ""
     }
   ]
 }
